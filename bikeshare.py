@@ -3,12 +3,12 @@ import math
 import pandas as pd
 import numpy as np
 
-city_data = {
+CITY_DATA = {
     "chicago": "chicago.csv",
     "new york city": "new_york_city.csv",
     "washington": "washington.csv",
 }
-month_data = {
+MONTH_DATA = {
     "january": 1,
     "february": 2,
     "march": 3,
@@ -23,7 +23,7 @@ month_data = {
     "jun": 6,
 }
 
-week_data = {
+WEEK_DATA = {
     "monday": 0,
     "tuesday": 1,
     "wednesday": 2,
@@ -63,7 +63,7 @@ def get_filters():
             city = "new york city"
         if city == "wa" or city == "washington dc":
             city = "washington"
-        if city not in city_data:
+        if city not in CITY_DATA:
             print("Kindly enter a valid city")
             continue
         city = city_data[city]
@@ -94,10 +94,10 @@ def get_filters():
                     "January/jan, February/feb, March/mar, April/apr, May, June/jun- "
                 ).lower()
                 print()
-                if month not in month_data:
+                if month not in MONTH_DATA:
                     print("Sorry I did not understand that input. Could you try again?")
                     continue
-                month = month_data[month]
+                month = MONTH_DATA[month]
                 day = "all"
             elif filter == "day":
                 print("Which day's data to look at? ")
@@ -105,10 +105,10 @@ def get_filters():
                     "Monday/mon, Tuesday/tues, Wednesday/wed, Thursday/thur, Friday/fri, Saturday/sat, Sunday/sun- "
                 ).lower()
                 print()
-                if day not in week_data:
+                if day not in WEEK_DATA:
                     print("Sorry I did not understand that input. Could you try again?")
                     continue
-                day = week_data[day]
+                day = WEEK_DATA[day]
                 month = "all"
             elif filter == "both":
                 print("Which month's data to look at?")
@@ -116,16 +116,16 @@ def get_filters():
                     "January/jan, February/feb, March/mar, April/apr, May, June/jun- "
                 ).lower()
                 print()
-                if month not in month_data:
+                if month not in MONTH_DATA:
                     print("Sorry I did not understand that input. Could you try again?")
                     continue
-                month = month_data[month]
+                month = MONTH_DATA[month]
                 print("And day of the week?")
                 day = input(
                     "Monday/mon, Tuesday/tues, Wednesday/wed, Thursday/thur, Friday/fri, Saturday/sat, Sunday/sun- "
                 ).lower()
                 print()
-                if day not in week_data:
+                if day not in WEEK_DATA:
                     print("Sorry I did not understand that input. Could you try again?")
                     continue
                 day = week_data[day]
@@ -176,15 +176,15 @@ def time_stats(df):
     # temporary_df = pd.read_csv(city)
     # TO DO: display the most common month
     most_freq_month = df["month"].mode()[0]
-    for num in month_data:
-        if month_data[num] == most_freq_month:
+    for num in MONTH_DATA:
+        if MONTH_DATA[num] == most_freq_month:
             most_freq_month = num.title()
     print("The most common month for travel is {}".format(most_freq_month))
 
     # TO DO: display the most common day of week
     most_freq_day = df["day_of_week"].mode()[0]
-    for num in week_data:
-        if week_data[num] == most_freq_day:
+    for num in WEEK_DATA:
+        if WEEK_DATA[num] == most_freq_day:
             most_freq_day = num.title()
     print("The most common day of week for travel is {}".format(most_freq_day))
 
