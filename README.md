@@ -6,7 +6,7 @@ This project is created in 11/10/2023
 
 ### Project Title
 
-Bike share project
+Bike share project by Udacity
 
 ### Description
 
