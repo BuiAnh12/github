@@ -3,12 +3,12 @@ import math
 import pandas as pd
 import numpy as np
 
-CITY_DATA = {
+city_data = {
     "chicago": "chicago.csv",
     "new york city": "new_york_city.csv",
     "washington": "washington.csv",
 }
-MONTH_DATA = {
+month_data = {
     "january": 1,
     "february": 2,
     "march": 3,
@@ -23,7 +23,7 @@ MONTH_DATA = {
     "jun": 6,
 }
 
-WEEK_DATA = {
+week_data = {
     "monday": 0,
     "tuesday": 1,
     "wednesday": 2,
@@ -63,10 +63,10 @@ def get_filters():
             city = "new york city"
         if city == "wa" or city == "washington dc":
             city = "washington"
-        if city not in CITY_DATA:
+        if city not in city_data:
             print("Kindly enter a valid city")
             continue
-        city = CITY_DATA[city]
+        city = city_data[city]
         break
     # TO DO: get user input for month (all, january, february, ... , june)
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
@@ -94,10 +94,10 @@ def get_filters():
                     "January/jan, February/feb, March/mar, April/apr, May, June/jun- "
                 ).lower()
                 print()
-                if month not in MONTH_DATA:
+                if month not in month_data:
                     print("Sorry I did not understand that input. Could you try again?")
                     continue
-                month = MONTH_DATA[month]
+                month = month_data[month]
                 day = "all"
             elif filter == "day":
                 print("Which day's data to look at? ")
@@ -105,10 +105,10 @@ def get_filters():
                     "Monday/mon, Tuesday/tues, Wednesday/wed, Thursday/thur, Friday/fri, Saturday/sat, Sunday/sun- "
                 ).lower()
                 print()
-                if day not in WEEK_DATA:
+                if day not in week_data:
                     print("Sorry I did not understand that input. Could you try again?")
                     continue
-                day = WEEK_DATA[day]
+                day = week_data[day]
                 month = "all"
             elif filter == "both":
                 print("Which month's data to look at?")
@@ -116,19 +116,19 @@ def get_filters():
                     "January/jan, February/feb, March/mar, April/apr, May, June/jun- "
                 ).lower()
                 print()
-                if month not in MONTH_DATA:
+                if month not in month_data:
                     print("Sorry I did not understand that input. Could you try again?")
                     continue
-                month = MONTH_DATA[month]
+                month = month_data[month]
                 print("And day of the week?")
                 day = input(
                     "Monday/mon, Tuesday/tues, Wednesday/wed, Thursday/thur, Friday/fri, Saturday/sat, Sunday/sun- "
                 ).lower()
                 print()
-                if day not in WEEK_DATA:
+                if day not in week_data:
                     print("Sorry I did not understand that input. Could you try again?")
                     continue
-                day = WEEK_DATA[day]
+                day = week_data[day]
             else:
                 print("Sorry I did not understand that input. Could you try again?")
                 continue
@@ -176,15 +176,15 @@ def time_stats(df):
     # temporary_df = pd.read_csv(city)
     # TO DO: display the most common month
     most_freq_month = df["month"].mode()[0]
-    for num in MONTH_DATA:
-        if MONTH_DATA[num] == most_freq_month:
+    for num in month_data:
+        if month_data[num] == most_freq_month:
             most_freq_month = num.title()
     print("The most common month for travel is {}".format(most_freq_month))
 
     # TO DO: display the most common day of week
     most_freq_day = df["day_of_week"].mode()[0]
-    for num in WEEK_DATA:
-        if WEEK_DATA[num] == most_freq_day:
+    for num in week_data:
+        if week_data[num] == most_freq_day:
             most_freq_day = num.title()
     print("The most common day of week for travel is {}".format(most_freq_day))
 
